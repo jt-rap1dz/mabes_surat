@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Kesatuan; // ini memanggil file model kesatuan
+use DB; // tipe kodingan untuk memkasi query builder
+// atau menggunakan
+//use illuminate\Support\Facades\DB;
 
 class KesatuanController extends Controller
 {
@@ -11,6 +15,9 @@ class KesatuanController extends Controller
      */
     public function index()
     {
+        $kesatuan = DB::table('kesatuan')->get();
+        //variabel keastuan menyimpan data table kesatuang yang diambil
+        //dari model kesatuan.php
         return view('admin.kesatuan.index');
     }
 
