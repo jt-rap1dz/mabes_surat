@@ -3,24 +3,24 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Agama; // ini memanggil file model kesatuan
+use App\Models\Pimpinan; // ini memanggil file model kesatuan
 use DB; // tipe kodingan untuk memakai library database query builder
 // atau menggunakan
 //use illuminate\Support\Facades\DB;
 
-class AgamaController extends Controller
+class PimpinanController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $agama = DB::table('agama')->get();
-        //variabel keastuan menyimpan data table agama yang diambil
-        //dari model agama.php
-        return view('admin.agama.index', compact('agama')); //compact untuk menampilkan data table
-        //return view mengarahakan ke folder admin/agama/index.blade.php
-        //sekaligus mengirimkan variable $agama
+        $pimpinan = DB::table('pimpinan')->get();
+        //variabel keastuan menyimpan data table pimpinan yang diambil
+        //dari model pimpinan.php
+        return view('admin.pimpinan.index', compact('pimpinan')); //compact untuk menampilkan data table
+        //return view mengarahakan ke folder admin/pimpinan/index.blade.php
+        //sekaligus mengirimkan variable $pimpinan
         //melalui compact
     }
 

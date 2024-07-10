@@ -18,7 +18,7 @@ class KesatuanController extends Controller
         $kesatuan = DB::table('kesatuan')->get();
         //variabel keastuan menyimpan data table kesatuang yang diambil
         //dari model kesatuan.php
-        return view('admin.kesatuan.index', compact ('kesatuan')); //compact untuk menampilkan data table
+        return view('admin.kesatuan.index', compact('kesatuan')); //compact untuk menampilkan data table
         //return view mengarahakan ke folder admin/kesatuan/index.blade.php
         //sekaligus mengirimkan variable $kesatuan
         //melalui compact 

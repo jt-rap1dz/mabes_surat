@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KesatuanController;
 use App\Http\Controllers\AgamaController;
+use App\Http\Controllers\PimpinanController;
 // use adalah memanggil file yang dituju
 
 
@@ -46,3 +47,4 @@ Route::get('/tampilan_keempat', function () {
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/kesatuan', [KesatuanController::class, 'index']);
 Route::get('/agama', [AgamaController::class, 'index'])->name('agama'); // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
+Route::get('/pimpinan', [PimpinanController::class, 'index'])->name('pimpinan'); // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
