@@ -4,14 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class KesatuanController extends Controller
+class AgamaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('admin.kesatuan.index');
+        return view('admin.agama.index');
+        // kode diatas adalah kode yang digunnakkan untuk mengakses
+        // ke resource/views/admin/agama/index.blade.php
     }
 
     /**

@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\KesatuanController;
+use App\Http\Controllers\AgamaController;
 // use adalah memanggil file yang dituju
 
 
-
+// dibawah ini adalah route langsung view tanpa controller
 Route::get('/', function () {
     return view('welcome');
 });
@@ -33,15 +34,15 @@ Route::get('/tampilan_keempat', function () {
 // return view diatas mengarahkan ke folder view utama
 // mengunakan titik (.) untuk lokasinnya
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-
 // Route::get('/dashboard', function () {
 //     return view('admin.dashboard');
 // });
 
-
-Route::get('/kesatuan', [KesatuanController::class, 'index']);
-
 // Route::get('/kesatuan', function () {
 //     return view('admin.kesatuan');
 // });
+
+// dibawah ini adalah route menggunakan controller
+Route::get('/dashboard', [DashboardController::class, 'index']);
+Route::get('/kesatuan', [KesatuanController::class, 'index']);
+Route::get('/agama', [AgamaController::class, 'index']);
