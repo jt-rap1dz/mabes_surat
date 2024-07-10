@@ -9,15 +9,12 @@ class Pimpinan extends Model
 {
     use HasFactory;
     protected $table = 'pimpinan'; // mengambil table di mysql
-    protected $fillable = ['namapimpinan']; // mengambil kolom dari table pimpinan
-    protected $fillable = ['pangkat'];
-    protected $fillable = ['nrp'];
-    protected $fillable = ['jabatan'];
-    
+    protected $fillable = ['namapimpinan', 'pangkat', 'nrp', 'jabatan']; // mengambil kolom dari table pimpinan
+
     // mematikan timestamps created_at dan update_at pada tabel user
     public $timestamps = false;
 
-    //relasi ke table personel
+    //relasi ke table tugas
     public function tugas()
     {
         return $this->hasOne(Tugas::class);
