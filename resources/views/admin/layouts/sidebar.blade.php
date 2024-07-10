@@ -19,6 +19,7 @@
                         data-bs-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
                             <a class="nav-link" href="{{url('kesatuan')}}">Kesatuan</a>
+                            <a class="nav-link" href="{{url('agama')}}">Agama</a>
                         </nav>
                     </div>
                     <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
