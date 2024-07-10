@@ -45,4 +45,4 @@ Route::get('/tampilan_keempat', function () {
 // dibawah ini adalah route menggunakan controller
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/kesatuan', [KesatuanController::class, 'index']);
-Route::get('/agama', [AgamaController::class, 'index'])->name('agama');
+Route::get('/agama', [AgamaController::class, 'index'])->name('agama'); // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
