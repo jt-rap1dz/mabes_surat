@@ -18,7 +18,7 @@ class Agama extends Model
     {
         return $this->hasMany(Personel::class);
         // jika relasi one to many akan dideklarasikan hasMany
-        // jika relasi many to one akan dideklarasikan belongTo
+        // jika relasi many to one akan dideklarasikan belongsTo
         // jika relasi one to one akan dideklarasikan hasOne
     }
 }

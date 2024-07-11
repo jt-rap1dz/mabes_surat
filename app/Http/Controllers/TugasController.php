@@ -3,24 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Agama; // ini memanggil file model agama
+use App\Models\Tugas; // ini memanggil file model Tugas
+use App\Models\Provinsi; // ini memanggil file model Provinsi
+use App\Models\Personel; // ini memanggil file model Personel
+use App\Models\Pimpinan; // ini memanggil file model Pimpinan
 use DB; // tipe kodingan untuk memakai library database query builder
 // atau menggunakan
 //use illuminate\Support\Facades\DB;
 
-class AgamaController extends Controller
+class TugasController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $agama = DB::table('agama')->get();
-        //variabel keastuan menyimpan data table agama yang diambil
-        //dari model agama.php
-        return view('admin.agama.index', compact('agama')); //compact untuk menampilkan data table
-        //return view mengarahakan ke folder admin/agama/index.blade.php
-        //sekaligus mengirimkan variable $agama
+        // $tugas = DB::table('tugas')->get();
+        $tugas = Tugas::join('pimpinan', 'pimpinan_id', '=', 'pimpinan.id')
+            ->join('provinsi', 'provinsi_id', '=', 'provinsi.id')
+            ->join('personel', 'personel_id', '=', 'personel.id')
+            ->select('tugas.*', 'pimpinan.namapimpinan as pimpinan', 'provinsi.wilayah as provinsi', 'personel.nama as personel')
+            ->get();
+        //variabel keastuan menyimpan data table tugas yang diambil
+        //dari model tugas.php
+        return view('admin.tugas.index', compact('tugas')); //compact untuk menampilkan data table
+        //return view mengarahakan ke folder admin/tugas/index.blade.php
+        //sekaligus mengirimkan variable $tugas
         //melalui compact
     }
 

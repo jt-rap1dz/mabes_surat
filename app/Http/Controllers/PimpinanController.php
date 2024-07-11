@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Pimpinan; // ini memanggil file model kesatuan
+use App\Models\Pimpinan; // ini memanggil file model pimpinan
 use DB; // tipe kodingan untuk memakai library database query builder
 // atau menggunakan
 //use illuminate\Support\Facades\DB;
