@@ -29,7 +29,7 @@ class AgamaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.agama.create');
     }
 
     /**
@@ -38,6 +38,13 @@ class AgamaController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('agama')->insert(['agama' => $request->agama1,
+        //kode diatas menyesuaikan dengan kolom yang ada di tabel agama
+    ]);
+    // jika berhasil menambahkan agama maka akan diarahkan kembali ke
+    //tampil agama/index
+    return redirect('agama');
+        
     }
 
     /**

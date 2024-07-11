@@ -17,8 +17,7 @@
     </div>
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fas fa-table me-1"></i>
-            DataTable Example
+            <a href="{{ url('agama/create') }}" class="btn btn-primary">Tambah</a>
         </div>
         <div class="card-body">
             <table id="datatablesSimple">

@@ -17,8 +17,8 @@ class PersonelController extends Controller
      */
     public function index()
     {
-        $personel = Personel::join('agama', 'agama_id', '=', 'agama_id')
-            ->join('kesatuan', 'kesatuan_id', '=', 'kesatuan_id')
+        $personel = Personel::join('agama', 'agama_id', '=', 'agama.id')
+            ->join('kesatuan', 'kesatuan_id', '=', 'kesatuan.id')
             ->select('personel.*', 'agama.agama', 'kesatuan.kesatuan')
             ->get();
 

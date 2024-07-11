@@ -45,10 +45,18 @@ Route::get('/tampilan_keempat', function () {
 //     return view('admin.kesatuan');
 // });
 
+
 // dibawah ini adalah route menggunakan controller
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/kesatuan', [KesatuanController::class, 'index']);
-Route::get('/agama', [AgamaController::class, 'index'])->name('agama'); // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
-Route::get('/pimpinan', [PimpinanController::class, 'index'])->name('pimpinan'); // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
+
+// digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
+Route::get('/agama', [AgamaController::class, 'index'])->name('agama');
+Route::get('/agama/create', [AgamaController::class, 'create'])->name('agamacreate');
+// agama/create membuat url untuk diarahkan ke file admin/agama/create.blade.php
+Route::post('/agama/store', [AgamaController::class, 'store'])->name('agamastore');
+// route post digunakan untuk mengirimkan data secara tertutup
+
+Route::get('/pimpinan', [PimpinanController::class, 'index'])->name('pimpinan');
 Route::get('/tugas', [TugasController::class, 'index'])->name('tugas');
 Route::get('/personel', [PersonelController::class, 'index'])->name('personel');
