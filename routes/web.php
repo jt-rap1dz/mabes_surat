@@ -49,6 +49,10 @@ Route::get('/tampilan_keempat', function () {
 // dibawah ini adalah route menggunakan controller
 Route::get('/dashboard', [DashboardController::class, 'index']);
 Route::get('/kesatuan', [KesatuanController::class, 'index']);
+Route::get('/kesatuan/create', [KesatuanController::class, 'create'])->name('kesatuancreate');
+// kesatuan/create membuat url untuk diarahkan ke file admin/kesatuan/create.blade.php
+Route::post('/kesatuan/store', [KesatuanController::class, 'store'])->name('kesatuanstore');
+// route post digunakan untuk mengirimkan data secara tertutup
 
 // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
 Route::get('/agama', [AgamaController::class, 'index'])->name('agama');
@@ -58,5 +62,19 @@ Route::post('/agama/store', [AgamaController::class, 'store'])->name('agamastore
 // route post digunakan untuk mengirimkan data secara tertutup
 
 Route::get('/pimpinan', [PimpinanController::class, 'index'])->name('pimpinan');
+Route::get('/pimpinan/create', [PimpinanController::class, 'create'])->name('pimpinancreate');
+// pimpinan/create membuat url untuk diarahkan ke file admin/pimpinan/create.blade.php
+Route::post('/pimpinan/store', [PimpinanController::class, 'store'])->name('pimpinanstore');
+// route post digunakan untuk mengirimkan data secara tertutup
+
 Route::get('/tugas', [TugasController::class, 'index'])->name('tugas');
+Route::get('/tugas/create', [TugasController::class, 'create'])->name('tugascreate');
+// tugas/create membuat url untuk diarahkan ke file admin/tugas/create.blade.php
+Route::post('/tugas/store', [TugasController::class, 'store'])->name('tugasstore');
+// route post digunakan untuk mengirimkan data secara tertutup
+
 Route::get('/personel', [PersonelController::class, 'index'])->name('personel');
+Route::get('/personel/create', [PersonelController::class, 'create'])->name('personelcreate');
+// personel/create membuat url untuk diarahkan ke file admin/personel/create.blade.php
+Route::post('/personel/store', [PersonelController::class, 'store'])->name('personelstore');
+// route post digunakan untuk mengirimkan data secara tertutup

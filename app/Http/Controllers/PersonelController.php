@@ -35,7 +35,7 @@ class PersonelController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.personel.create');
     }
 
     /**
@@ -43,7 +43,17 @@ class PersonelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('personel')->insert([
+            'nama' => $request->nama,
+            'nrp' => $request->nrp,
+            'alamat' => $request->alamat,
+            'agama_id' => $request->agama,
+            'kesatuan_id' => $request->kesatuan,
+        //kode diatas menyesuaikan dengan kolom yang ada di tabel personel
+    ]);
+    // jika berhasil menambahkan personel maka akan diarahkan kembali ke
+    //tampil personel/index
+    return redirect('personel');
     }
 
     /**

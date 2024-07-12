@@ -29,7 +29,7 @@ class KesatuanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kesatuan.create');
     }
 
     /**
@@ -37,7 +37,12 @@ class KesatuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('kesatuan')->insert(['kesatuan' => $request->kesatuan,
+        //kode diatas menyesuaikan dengan kolom yang ada di tabel kesatuan
+    ]);
+    // jika berhasil menambahkan kesatuan maka akan diarahkan kembali ke
+    //tampil kesatuan/index
+    return redirect('kesatuan');
     }
 
     /**

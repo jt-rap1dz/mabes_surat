@@ -3,17 +3,17 @@
 @section('konten')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<h1 align="center">Tambah Agama</h1>
+<h1 align="center">Tambah Tugas</h1>
 
-<form method="POST" action="{{ url('agama/store') }}"
+<form method="POST" action="{{ url('tugas/store') }}"
 enctype="multipart/form-data">
 @csrf
 {{-- multipart/form-data => digunakan untuk menangkap data file atau selain data array --}}
 {{-- csrf => digunakan untuk memproteksi form --}}
 <div class="form-group row">
-    <label for="text" class="col-4 col-form-label">Agama</label> 
+    <label for="text" class="col-4 col-form-label">Tugas</label> 
     <div class="col-8">
-    <input id="text" name="agama1" type="text" class="form-control" required>
+    <input id="text" name="tugas" type="text" class="form-control" required>
     </div>
 </div> 
 <div class="form-group row">

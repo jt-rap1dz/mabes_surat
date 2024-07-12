@@ -29,7 +29,7 @@ class PimpinanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pimpinan.create');
     }
 
     /**
@@ -37,7 +37,16 @@ class PimpinanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('pimpinan')->insert([
+            'namapimpinan' => $request->nama,
+            'pangkat' => $request->pangkat,
+            'nrp' => $request->nrp,
+            'jabatan' => $request->jabatan,
+        //kode diatas menyesuaikan dengan kolom yang ada di tabel pimpinan
+    ]);
+    // jika berhasil menambahkan pimpinan maka akan diarahkan kembali ke
+    //tampil pimpinan/index
+    return redirect('pimpinan');
     }
 
     /**

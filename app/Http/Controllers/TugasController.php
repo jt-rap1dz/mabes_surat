@@ -37,7 +37,7 @@ class TugasController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tugas.create');
     }
 
     /**
@@ -45,7 +45,13 @@ class TugasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::table('tugas')->insert([
+            'tugas' => $request->tugas,
+        //kode diatas menyesuaikan dengan kolom yang ada di tabel tugas
+    ]);
+    // jika berhasil menambahkan tugas maka akan diarahkan kembali ke
+    //tampil tugas/index
+    return redirect('tugas');
     }
 
     /**
