@@ -35,7 +35,10 @@ class PersonelController extends Controller
      */
     public function create()
     {
-        return view('admin.personel.create');
+        // panggil data agama dan kesatuan
+        $agama = DB::table('agama')->get();
+        $kesatuan = DB::table('kesatuan')->get();
+        return view('admin.personel.create', compact('agama', 'kesatuan'));
     }
 
     /**
