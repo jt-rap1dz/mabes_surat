@@ -50,8 +50,27 @@ class TugasController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('tugas')->insert([
-            'tugas' => $request->tugas,
+        $request->validate([
+            'nomorsurat' => 'required|unique:tugas|min:6',
+            'mulai' => 'required',
+            'akhir' => 'required'
+        ],
+        [
+            'nomorsurat.required' => 'Nomor Surat Tugas harus diisi',
+            'nomorsurat.unique' => 'Nomor Surat Tugas sudah ada',
+            'nomorsurat.min' => 'NRP minimal 6 karakter',
+            'mulai.required' => 'Tanggal Mulai harus diisi',
+            'akhir.required' => 'Tanggal Akhir harus diisi'
+        ]
+    
+    );
+            DB::table('tugas')->insert([
+            'nomorsurat' => $request->nomorsurat,
+            'mulai' => $request->mulai,
+            'akhir' => $request->akhir,
+            'provinsi_id' => $request->provinsi,
+            'personel_id' => $request->personel,
+            'pimpinan_id' => $request->pimpinan,
         //kode diatas menyesuaikan dengan kolom yang ada di tabel tugas
     ]);
     // jika berhasil menambahkan tugas maka akan diarahkan kembali ke

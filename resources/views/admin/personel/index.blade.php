@@ -21,6 +21,7 @@
                             <th>Alamat</th>
                             <th>Agama</th>
                             <th>Kesatuan</th>
+                            <th>Foto</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -31,6 +32,7 @@
                             <th>Alamat</th>
                             <th>Agama</th>
                             <th>Kesatuan</th>
+                            <th>Foto</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -43,6 +45,13 @@
                                 <td>{{ $per->alamat }}</td>
                                 <td>{{ $per->agama }}</td>
                                 <td>{{ $per->kesatuan}}</td>
+                                <td>
+                                    @empty ($per->foto)
+                                    <img src="{{ asset('admin/img/noimage.jpg') }}" width="100px">
+                                    @else
+                                    <img src="{{ asset('admin/img/'.$per->foto) }}" width="100px">
+                                    @endempty
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

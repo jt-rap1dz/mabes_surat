@@ -9,7 +9,7 @@ class Provinsi extends Model
 {
     use HasFactory;
     protected $table = 'provinsi'; // mengambil table di mysql
-    protected $fillable = ['wilayah', 'kota']; // mengambil kolom dari table personel
+    protected $fillable = ['wilayah']; // mengambil kolom dari table personel
 
     // mematikan timestamps created_at dan update_at pada tabel user
     public $timestamps = false;

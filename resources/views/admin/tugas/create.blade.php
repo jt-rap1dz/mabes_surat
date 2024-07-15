@@ -5,38 +5,58 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <h1 align="center">Tambah Tugas</h1>
 
+@if ($errors->any())
+<div class="alert alert-danger" >
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
+
+
 <form method="POST" action="{{ url('tugas/store') }}"
 enctype="multipart/form-data">
 @csrf
 {{-- multipart/form-data => digunakan untuk menangkap data file atau selain data array --}}
 {{-- csrf => digunakan untuk memproteksi form --}}
 <div class="form-group row">
-    <label for="text" class="col-4 col-form-label">Tugas</label> 
-    <div class="col-8">
-    <input id="text" name="tugas" type="text" class="form-control" required><br>
-    </div>
     <label for="text" class="col-4 col-form-label">Nomor Surat</label> 
     <div class="col-8">
-    <input id="text" name="nomor" type="text" class="form-control" required><br>
+    <input id="text" name="nomorsurat" type="text" class="form-control" required><br>
     </div>
-    <label for="text" class="col-4 col-form-label">Mulai</label> 
+    <label for="text" class="col-4 col-form-label">Mulai Tugas</label> 
     <div class="col-8">
     <input id="text" name="mulai" type="date" class="form-control" required><br>
     </div>
-    <label for="text" class="col-4 col-form-label">Akhir</label> 
+    <label for="text" class="col-4 col-form-label">Selesai Tugas</label> 
     <div class="col-8">
     <input id="text" name="akhir" type="date" class="form-control" required><br>
     </div>
     <label for="text" class="col-4 col-form-label">Provinsi</label> 
     <div class="col-8">
-    <input id="text" name="provinsi" type="text" class="form-control" required><br>
-    </div><label for="text" class="col-4 col-form-label">Personel</label> 
+            <select id="select" name="provinsi" class="custom-select">
+                @foreach ($provinsi as $pr)
+                <option value="{{ $pr->id }}"> {{ $pr->wilayah }} </option>
+                @endforeach
+            </select>
+    </div><br><br>
+    <label for="text" class="col-4 col-form-label">Personel</label> 
     <div class="col-8">
-    <input id="text" name="personel" type="text" class="form-control" required><br>
-    </div>
+        <select id="select2" name="personel" class="custom-select">
+            @foreach ($personel as $per)
+            <option value="{{ $per->id }}"> {{ $per->nama }} </option>
+            @endforeach
+        </select>
+    </div><br><br>
     <label for="text" class="col-4 col-form-label">Pimpinan</label> 
     <div class="col-8">
-    <input id="text" name="pimpinan" type="text" class="form-control" required><br>
+        <select id="select2" name="pimpinan" class="custom-select">
+            @foreach ($pimpinan as $pim)
+            <option value="{{ $pim->id }}"> {{ $pim->namapimpinan }} </option>
+            @endforeach
+        </select>
     </div>
 </div> 
 <div class="form-group row">
