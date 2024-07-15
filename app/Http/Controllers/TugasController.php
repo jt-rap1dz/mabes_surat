@@ -37,7 +37,12 @@ class TugasController extends Controller
      */
     public function create()
     {
-        return view('admin.tugas.create');
+        $pimpinan = DB::table('pimpinan')->get();
+        $provinsi = DB::table('provinsi')->get();
+        $personel = DB::table('personel')->get();
+
+        return view('admin.tugas.create', compact('pimpinan', 'provinsi', 'personel'));
+
     }
 
     /**

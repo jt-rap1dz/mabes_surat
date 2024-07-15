@@ -13,7 +13,30 @@ enctype="multipart/form-data">
 <div class="form-group row">
     <label for="text" class="col-4 col-form-label">Tugas</label> 
     <div class="col-8">
-    <input id="text" name="tugas" type="text" class="form-control" required>
+    <input id="text" name="tugas" type="text" class="form-control" required><br>
+    </div>
+    <label for="text" class="col-4 col-form-label">Nomor Surat</label> 
+    <div class="col-8">
+    <input id="text" name="nomor" type="text" class="form-control" required><br>
+    </div>
+    <label for="text" class="col-4 col-form-label">Mulai</label> 
+    <div class="col-8">
+    <input id="text" name="mulai" type="date" class="form-control" required><br>
+    </div>
+    <label for="text" class="col-4 col-form-label">Akhir</label> 
+    <div class="col-8">
+    <input id="text" name="akhir" type="date" class="form-control" required><br>
+    </div>
+    <label for="text" class="col-4 col-form-label">Provinsi</label> 
+    <div class="col-8">
+    <input id="text" name="provinsi" type="text" class="form-control" required><br>
+    </div><label for="text" class="col-4 col-form-label">Personel</label> 
+    <div class="col-8">
+    <input id="text" name="personel" type="text" class="form-control" required><br>
+    </div>
+    <label for="text" class="col-4 col-form-label">Pimpinan</label> 
+    <div class="col-8">
+    <input id="text" name="pimpinan" type="text" class="form-control" required><br>
     </div>
 </div> 
 <div class="form-group row">
