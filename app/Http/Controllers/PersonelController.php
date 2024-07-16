@@ -66,7 +66,7 @@ class PersonelController extends Controller
     
     );
 
-    // untuk mengeksekusi foto
+    // untuk mengeksekusi foto ke folder public
     if(!empty($request->foto)){ //jika tidak kosong maka request foto
         $fileName = 'foto-'.uniqid() .'.'.$request->foto->extension();
         // var fileName menyimpan nama foto dengan extension apa saja

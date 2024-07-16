@@ -62,8 +62,20 @@ class TugasController extends Controller
             'mulai.required' => 'Tanggal Mulai harus diisi',
             'akhir.required' => 'Tanggal Akhir harus diisi'
         ]
-    
     );
+
+    // letak code foto di function store
+    if(!empty($request->foto)){ //jika tidak kosong maka request foto
+        $fileName = 'foto-'.uniqid() .'.'.$request->foto->extension();
+        // var fileName menyimpan nama foto dengan extension apa saja
+        $request->foto->move(public_path('admin/img'), $fileName);
+    } else {
+        // jika formnya kosong maka fotonyya juga kosong
+        $fileName = '';
+    }
+
+    
+    
             DB::table('tugas')->insert([
             'nomorsurat' => $request->nomorsurat,
             'mulai' => $request->mulai,
@@ -71,6 +83,7 @@ class TugasController extends Controller
             'provinsi_id' => $request->provinsi,
             'personel_id' => $request->personel,
             'pimpinan_id' => $request->pimpinan,
+            'foto' => $fileName,
         //kode diatas menyesuaikan dengan kolom yang ada di tabel tugas
     ]);
     // jika berhasil menambahkan tugas maka akan diarahkan kembali ke
@@ -83,7 +96,14 @@ class TugasController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $tugas = Tugas::join('pimpinan', 'pimpinan_id', '=', 'pimpinan.id')
+            ->join('provinsi', 'provinsi_id', '=', 'provinsi.id')
+            ->join('personel', 'personel_id', '=', 'personel.id')
+            ->select('tugas.*', 'pimpinan.namapimpinan as pimpinan', 'pimpinan.jabatan', 'pimpinan.pangkat', 'provinsi.wilayah as provinsi', 'personel.nama as personel', 'personel.nrp', 'provinsi.wilayah')
+            ->where('tugas.id', $id)
+            ->get();
+
+        return view('admin.tugas.show', compact('tugas'));
     }
 
     /**
@@ -107,6 +127,8 @@ class TugasController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::table('tugas')->where('id', $id)->delete();
+        
+        return redirect('tugas');
     }
 }

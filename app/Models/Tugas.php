@@ -9,7 +9,7 @@ class Tugas extends Model
 {
     use HasFactory;
     protected $table = 'tugas'; // mengambil table di mysql
-    protected $fillable = ['nomorsurat', 'mulai', 'akhir', 'provinsi_id', 'personel_id', 'pimpinan_id']; // mengambil kolom dari table tugas
+    protected $fillable = ['nomorsurat', 'mulai', 'akhir', 'provinsi_id', 'personel_id', 'pimpinan_id', 'foto']; // mengambil kolom dari table tugas
 
     // mematikan timestamps created_at dan update_at pada tabel user
     public $timestamps = false;

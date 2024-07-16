@@ -72,6 +72,9 @@ Route::get('/tugas/create', [TugasController::class, 'create'])->name('tugascrea
 // tugas/create membuat url untuk diarahkan ke file admin/tugas/create.blade.php
 Route::post('/tugas/store', [TugasController::class, 'store'])->name('tugasstore');
 // route post digunakan untuk mengirimkan data secara tertutup
+Route::get('/tugas/show/{id}', [TugasController::class, 'show'])->name('tugasshow');
+// route show adalah url untuk melihat detail data per line atau id
+Route::get('/tugas/delete/{id}', [TugasController::class, 'destroy'])->name('tugasdestroy');
 
 Route::get('/personel', [PersonelController::class, 'index'])->name('personel');
 Route::get('/personel/create', [PersonelController::class, 'create'])->name('personelcreate');
