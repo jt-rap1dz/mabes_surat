@@ -17,12 +17,14 @@
                     <tr>
                         <th>No</th>
                         <th>Kesatuan</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
                         <th>No</th>
                         <th>Kesatuan</th>
+                        <th></th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -31,6 +33,39 @@
                     <tr>
                         <td>{{$no++}}</td>
                         <td>{{$k->kesatuan}}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $k->id }}">Edit
+                            </button>
+                            
+                            <div class="modal fade" id="exampleModal{{ $k->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit</h1>
+                                        </div>
+                                        <div class="modal-body"> Apakah anda yakin untuk
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close
+                                            </button>
+                                            <a href="{{ url('kesatuan/delete/'. $k->id) }}" class="btn btn danger">Delete</a>
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+
+                            </div>
+
+
+
+
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>

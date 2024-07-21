@@ -53,6 +53,8 @@ Route::get('/kesatuan/create', [KesatuanController::class, 'create'])->name('kes
 // kesatuan/create membuat url untuk diarahkan ke file admin/kesatuan/create.blade.php
 Route::post('/kesatuan/store', [KesatuanController::class, 'store'])->name('kesatuanstore');
 // route post digunakan untuk mengirimkan data secara tertutup
+Route::post('/kesatuan/update/{id}', [KesatuanController::class, 'update'])->name('kesatuanupdate');
+
 
 // digunakan jika ada kesamaan fungsi class, maka menggunakan (name)
 Route::get('/agama', [AgamaController::class, 'index'])->name('agama');
@@ -81,3 +83,6 @@ Route::get('/personel/create', [PersonelController::class, 'create'])->name('per
 // personel/create membuat url untuk diarahkan ke file admin/personel/create.blade.php
 Route::post('/personel/store', [PersonelController::class, 'store'])->name('personelstore');
 // route post digunakan untuk mengirimkan data secara tertutup
+Route::get('/personel/edit/{id}', [PersonelController::class, 'edit'])->name('personeledit');
+Route::post('/personel/update/{id}', [PersonelController::class, 'update'])->name('personelupdate');
+Route::get('/personel/personelPDF', [PersonelController::class, 'personelPDF'])->name('personelPDF');

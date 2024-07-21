@@ -9,6 +9,7 @@ use App\Models\Agama; // ini memanggil file model agama
 use DB; // tipe kodingan untuk memakai library database query builder
 // atau menggunakan
 //use illuminate\Support\Facades\DB;
+use PDF;
 
 class PersonelController extends Controller
 {
@@ -106,7 +107,11 @@ class PersonelController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $agama = DB::table('agama')->get();
+        $kesatuan = DB::table('kesatuan')->get();
+        $personel = DB::table('personel')->where('id', $id)->get();
+        
+        return view('admin.personel.edit', compact('agama', 'kesatuan', 'personel'));
     }
 
     /**
@@ -114,7 +119,27 @@ class PersonelController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        if(!empty($request->foto)){ //jika tidak kosong maka request foto
+            $fileName = 'foto-'.uniqid() .'.'.$request->foto->extension();
+            // var fileName menyimpan nama foto dengan extension apa saja
+            $request->foto->move(public_path('admin/img'), $fileName);
+        } else {
+            // jika formnya kosong maka fotonyya juga kosong
+            $fileName = '';
+        }
+
+
+        DB::table('personel')->where('id', $id)->update([
+            'nama' => $request->nama,
+            'nrp' => $request->nrp,
+            'alamat' => $request->alamat,
+            'agama_id' => $request->agama,
+            'kesatuan_id' => $request->kesatuan,
+            'foto' => $fileName
+        ]);
+
+        return redirect('personel');
+
     }
 
     /**
@@ -124,4 +149,13 @@ class PersonelController extends Controller
     {
         //
     }
+
+    public function personelPDF() 
+    {
+        $personel = DB::table('personel')->get();
+        $pdf = Pdf::loadView('admin.personel.personelPDF', compact('personel'));
+
+        return $pdf->stream();
+    }
+
 }

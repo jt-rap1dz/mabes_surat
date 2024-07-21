@@ -66,7 +66,13 @@ class KesatuanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        DB::table('kesatuan')
+        ->where('id',  $request)
+        ->update([
+            'kesatuan'=>$request->kesatuan
+        ]);
+
+    return redirect('kesatuan');
     }
 
     /**
