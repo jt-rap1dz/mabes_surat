@@ -82,6 +82,10 @@ class TugasController extends Controller
             'nomorsurat' => $request->nomorsurat,
             'mulai' => $request->mulai,
             'akhir' => $request->akhir,
+            'menimbang' => $request->menimbang,
+            'dasar' => $request->dasar,
+            'perihal' => $request->perihal,
+            'tglpembuatan' => $request->tglpembuatan,
             'provinsi_id' => $request->provinsi,
             'personel_id' => $request->personel,
             'pimpinan_id' => $request->pimpinan,
@@ -121,7 +125,53 @@ class TugasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'no_surat' => 'required',
+            'mulai' => 'required',
+            'akhir' => 'required'
+        ],
+        [
+            'no_surat.required' => 'Nomor Surat Wajib Diisi',
+            'mulai.required' => 'Tanggal mulai wajib diisi',
+            'akhir.required' => 'Tanggal akhir wajib diisi'
+        ]
+        
+        );
+// deklarasi table tugas foto sesuai id menggunakan first()
+//tujuannya => ketika foto tidak diupdate, maka foto tidak
+//berubah
+        // first hanya satu data yang diambil 
+        //get biasanya mengambil semua sesuai kondisi
+$tugas = DB::table('tugas')->where('id', $id)->first();
+//jika foto sudah ada maka hapus foto lama
+if($request->hasFile('foto')){
+if(!empty($tugas->foto)){
+    unlink(public_path('admin/img/' . $tugas->foto));
+}
+//tambahkan foto baru
+$fileName = 'foto-'. $id . '.' .$request->foto->extension();
+//var fileName menyimpan nama foto dengan extension apa saja 
+$request->foto->move(public_path('admin/img'), $fileName);
+} else {
+    //jika fotonya tidak diubah maka biarkan fotonya
+    $fileName = $tugas->foto;
+}
+
+        DB::table('tugas')->where('id', $id)->update([
+            'no_surat' => $request->no_surat,
+            'mulai' => $request->mulai,
+            'akhir' => $request->akhir,
+            'menimbang' => $request->menimbang,
+            'dasar' => $request->dasar,
+            'perihal' => $request->perihal,
+            'tglpembuatan' => $request->tglpembuatan,
+            'provinsi_id'=> $request->provinsi_id,
+            'personel_id' => $request->personel_id,
+            'pimpinan_id' => $request->pimpinan_id,
+            'foto' => $fileName
+        ]);
+        //jika berhasil menambahkan agama maka akan diarahkan kembali
+        return redirect('tugas');
     }
 
     /**

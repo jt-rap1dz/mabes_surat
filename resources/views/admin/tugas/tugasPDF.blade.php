@@ -1,24 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+<meta charset="UTF-8">
+<title>Surat Perintah</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Untuk memastikan konten berada di tengah vertikal */
+    }
+    .container {
+        width: 800px; /* Lebar A4 dalam pixel */
+        padding: 50px 50px; /* Padding untuk memperbaiki tampilan */
+        box-sizing: border-box; /* Menyertakan padding dalam perhitungan lebar */
+        background-color: #fff; /* Menambahkan warna latar belakang */
+        box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Menambahkan bayangan untuk efek 3D */
+    }
+    .header {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    position: absolute;
+    top: 15px;
+    left: 40px;
+}
+        
+
+    
+    .content {
+        font-size: 16px;
+        line-height: 1.5;
+        text-align: justify;
+        margin-bottom: 20px;
+        position: absolute;
+        left: 40px;
+        right: 20px;
+    }
+    
+    .signature {
+        text-align: right;
+        margin-top: 20px;
+    }
+    
+</style>
 </head>
 <body>
 
-    <p>{{ $tugas->nomorsurat }}</p>
-    <p>{{ $tugas->personel }}</p>
-    <p>{{ $tugas->nrp }}</p>
-    <p>{{ $tugas->mulai }}</p>
-    <p>{{ $tugas->akhir }}</p>
-    <p>Tembusan :</p>
-    <ol>
-        @foreach ($tembusan as $tem)
-            <li>{{ $tem->jabatan }}</li>
-        @endforeach
-    </ol>
+<div class="container">
+    <div class="header">
+        MARKAS BESAR ANGKATAN UDARA<br>
+    <u> DINAS INFORMASI DAN PENGOLAHAN DATA</u>
+    </div>
     
+    
+    
+    <div class="content">
+    <center>
+    <img src="{{public_path('admin/img/lambang.png')}}" width="90px" alt="">
+    </center>
+        <p align="center">SURAT PERINTAH<br>
+        Nomor Surat Tugas {{$tugas->nomorsurat}}</p>
+
+        <p> Menimbang: <br>
+        {{ $tugas->menimbang }}.</p>
+
+        <p>Dasar: <br>
+        {{ $tugas->dasar }}.</p>
+
+        <p align="center">DIPERINTAHKAN</p>
+        <p>Kepada:</p>
+        <ol>
+            <li>{{$tugas->personel}} NRP {{$tugas->nrp}}, jabatan Kapustasisinfo Disinfolahtaau (sebagai narasumber).</li>
+        </ol>
+
+        <p>Untuk:</p>
+        <ol>
+            <li>{{ $tugas->perihal }}, dengan ketentuan sebagai berikut:</li>
+            <ul>
+                <li>Berangkat tanggal {{$tugas->mulai}}, kembali tanggal {{$tugas->akhir}}, berkendaraan umum/bus/dll.</li>
+                <li>Biaya perjalanan dinas pergi pulang ditanggung oleh negara.</li>
+            </ul>
+            <li>Melaksanakan perintah ini dengan rasa tanggung jawab.</li>
+        </ol>
+        <p>Selesai.</p>
+        <div class="signature">
+        Dikeluarkan di Jakarta<br>
+        pada tanggal &nbsp; &nbsp;  &nbsp; &nbsp;Januari 2016<br><br>
+        <strong>{{$tugas->jabatan}},</strong><br><br><br><br><br>
+        {{$tugas->pimpinan}}<br>
+        {{$tugas->pangkat}}
+    </div>
+        <p>Tembusan:</p>
+        <ol>
+        @foreach($tembusan as $t)
+            <li>{{$t->jabatan}}</li>
+            @endforeach
+
+            
+
+        </ol>
+    </div>
+
+   
+</div>
+
 </body>
 </html>

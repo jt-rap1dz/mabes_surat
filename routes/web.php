@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 
 
-// route::group(['middleware' => ['auth']], function(){
+route::group(['middleware' => ['auth']], function(){
 
 
 
@@ -96,7 +96,8 @@ Route::get('/personel/edit/{id}', [PersonelController::class, 'edit'])->name('pe
 Route::post('/personel/update/{id}', [PersonelController::class, 'update'])->name('personelupdate');
 Route::get('/personel/personelPDF', [PersonelController::class, 'personelPDF'])->name('personelPDF');
 
-// });
-// Auth::routes();
+});
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');

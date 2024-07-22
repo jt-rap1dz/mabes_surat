@@ -39,6 +39,22 @@
                                     <td>{{ $tug->akhir }}</td>
                                 </tr>
                                 <tr>
+                                    <td>Menimbang</td>
+                                    <td>{{ $tug->menimbang }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Dasar</td>
+                                    <td>{{ $tug->dasar }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Perihal</td>
+                                    <td>{{ $tug->perihal }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Pembuatan</td>
+                                    <td>{{ $tug->tglpembuatan }}</td>
+                                </tr>
+                                <tr>
                                     <td>Nama Personel</td>
                                     <td>{{ $tug->personel }}</td>
                                 </tr>

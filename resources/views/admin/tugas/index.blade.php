@@ -19,6 +19,10 @@
                             <th>Nomor Surat</th>
                             <th>Mulai</th>
                             <th>Akhir</th>
+                            <th>Menimbang</th>
+                            <th>Dasar</th>
+                            <th>Perihal</th>
+                            <th>Tanggal Pembuatan</th>
                             <th>Provinsi</th>
                             <th>Personel</th>
                             <th>Pimpinan</th>
@@ -31,6 +35,10 @@
                             <th>Nomor Surat</th>
                             <th>Mulai</th>
                             <th>Akhir</th>
+                            <th>Menimbang</th>
+                            <th>Dasar</th>
+                            <th>Perihal</th>
+                            <th>Tanggal Pembuatan</th>
                             <th>Provinsi</th>
                             <th>Personel</th>
                             <th>Pimpinan</th>
@@ -45,6 +53,10 @@
                                 <td>{{ $tug->nomorsurat }}</td>
                                 <td>{{ $tug->mulai }}</td>
                                 <td>{{ $tug->akhir }}</td>
+                                <td>{{ $tug->menimbang }}</td>
+                                <td>{{ $tug->dasar }}</td>
+                                <td>{{ $tug->perihal }}</td>
+                                <td>{{ $tug->tglpembuatan }}</td>
                                 <td>{{ $tug->provinsi }}</td>
                                 <td>{{ $tug->personel }}</td>
                                 <td>{{ $tug->pimpinan }}</td>
