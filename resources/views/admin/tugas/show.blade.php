@@ -13,6 +13,8 @@
         <div class="card-body">
             <h3 class="card-title">Surat Tugas Diberikan Kepada :</h3>
             <h6 class="card-subtitle">{{ $tug->personel }}</h6>
+            <br>
+            <a href="{{ url('tugas/cetak_pdf/'.$tug->id) }}" class="btn btn-danger">PDF</a>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="white-box text-center"><img src="{{ asset('admin/img/'.$tug->foto) }}" class="img-responsive"></div>

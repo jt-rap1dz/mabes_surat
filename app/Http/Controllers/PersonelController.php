@@ -155,7 +155,7 @@ class PersonelController extends Controller
         $personel = DB::table('personel')->get();
         $pdf = Pdf::loadView('admin.personel.personelPDF', compact('personel'));
 
-        return $pdf->stream();
+        return $pdf->stream('personel.pdf');
     }
 
 }

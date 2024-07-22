@@ -10,6 +10,8 @@ use App\Models\Pimpinan; // ini memanggil file model Pimpinan
 use DB; // tipe kodingan untuk memakai library database query builder
 // atau menggunakan
 //use illuminate\Support\Facades\DB;
+use App\Models\Tembusan;
+use PDF;
 
 class TugasController extends Controller
 {
@@ -130,5 +132,30 @@ class TugasController extends Controller
         DB::table('tugas')->where('id', $id)->delete();
         
         return redirect('tugas');
+    }
+
+    public function cetak_pdf($id)
+    {
+        $tugas = Tugas::leftJoin('tembusan', 'tugas.id', '=', 'tembusan.tugas_id')
+        ->join('pimpinan', 'tugas.pimpinan_id', '=', 'pimpinan.id')
+        ->join('personel', 'tugas.personel_id', '=', 'personel.id')
+        ->join('provinsi', 'tugas.provinsi_id', '=', 'provinsi.id')
+        ->select(
+            'tugas.*',
+            'pimpinan.namapimpinan as pimpinan',
+            'pimpinan.jabatan',
+            'pimpinan.pangkat',
+            'pimpinan.nrp as pimpinan_nrp',
+            'personel.nama as personel',
+            'personel.nrp',
+            'provinsi.wilayah'
+        )
+        ->where('tugas.id', $id)
+        ->first();
+
+    $tembusan = DB::table('tembusan')->where('tugas_id', $id)->get();
+    $pdf = Pdf::loadView('admin.tugas.tugasPDF', compact('tugas', 'tembusan'));
+
+    return $pdf->stream('tugas.pdf');
     }
 }

@@ -16,11 +16,6 @@ Route::get('/', function () {
 });
 
 
-
-// route::group(['middleware' => ['auth']], function(){
-
-
-
 // routing tanpa diarahkan kemanapun
 Route::get('/salam', function () {
     return "<h1>Selamat Belajar Laravel</h1>";
@@ -96,7 +91,6 @@ Route::get('/personel/edit/{id}', [PersonelController::class, 'edit'])->name('pe
 Route::post('/personel/update/{id}', [PersonelController::class, 'update'])->name('personelupdate');
 Route::get('/personel/personelPDF', [PersonelController::class, 'personelPDF'])->name('personelPDF');
 
-// });
-// Auth::routes();
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
