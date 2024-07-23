@@ -62,6 +62,9 @@
                                 <td>{{ $tug->pimpinan }}</td>
                                 <td>
                                     <a href="{{ url('tugas/show/'.$tug->id) }}" class="btn btn-success btn-sm"><i class="fa-regular fa-eye"></i></a>
+                                    <a href="{{url('tugas/edit/'.$tug->id)}}" class="btn btn-warning btn-sm">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
                                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ $tug->id }}">
                                         <i class="fa-solid fa-trash"></i>
                                     </button>

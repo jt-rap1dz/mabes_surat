@@ -40,15 +40,15 @@
                                 </tr>
                                 <tr>
                                     <td>Menimbang</td>
-                                    <td>{{ $tug->menimbang }}</td>
+                                    <td>{!! html_entity_decode($tug->menimbang) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Dasar</td>
-                                    <td>{{ $tug->dasar }}</td>
+                                    <td>{!! html_entity_decode($tug->dasar) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Perihal</td>
-                                    <td>{{ $tug->perihal }}</td>
+                                    <td>{!! html_entity_decode($tug->perihal) !!}</td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal Pembuatan</td>

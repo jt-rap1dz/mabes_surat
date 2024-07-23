@@ -37,25 +37,23 @@ enctype="multipart/form-data">
 
     <label for="textarea" class="col-4 col-form-label">Menimbang</label> 
     <div class="col-8">
-    <textarea id="textarea" name="menimbang" cols="40" rows="2" class="form-control"></textarea><br>
+    <textarea id="content" name="menimbang" cols="40" rows="2" class="form-control"></textarea><br>
+    {{-- content menyesuaikan nama script di footer layout ckeditor --}}
     </div>
     <label for="textarea" class="col-4 col-form-label">Dasar</label> 
     <div class="col-8">
-    <textarea id="textarea" name="dasar" cols="40" rows="2" class="form-control"></textarea><br>
+    <textarea id="dasar" name="dasar" cols="40" rows="2" class="form-control"></textarea><br>
     </div>
     <label for="textarea" class="col-4 col-form-label">Perihal</label> 
     <div class="col-8">
-    <textarea id="textarea" name="perihal" cols="40" rows="2" class="form-control"></textarea><br>
+    <textarea id="perihal" name="perihal" cols="40" rows="2" class="form-control"></textarea><br>
     </div>
+
+
     <label for="text" class="col-4 col-form-label">Tanggal Pembuatan</label> 
     <div class="col-8">
     <input id="text" name="tglpembuatan" type="date" class="form-control" required><br>
     </div>
-    
-
-
-
-
     <label for="text" class="col-4 col-form-label">Provinsi</label> 
     <div class="col-8">
             <select id="select" name="provinsi" class="custom-select">

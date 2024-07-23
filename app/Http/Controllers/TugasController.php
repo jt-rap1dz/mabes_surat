@@ -117,7 +117,12 @@ class TugasController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pimpinan = DB::table('pimpinan')->get();
+        $provinsi = DB::table('provinsi')->get();
+        $personel = DB::table('personel')->get();
+        $tugas = DB::table('tugas')->where('id', $id)->get();
+        return view('admin.tugas.edit', 
+        compact('pimpinan', 'provinsi', 'personel', 'tugas'));
     }
 
     /**
@@ -126,7 +131,7 @@ class TugasController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'no_surat' => 'required',
+            'nomorsurat' => 'required',
             'mulai' => 'required',
             'akhir' => 'required'
         ],
@@ -158,7 +163,7 @@ $request->foto->move(public_path('admin/img'), $fileName);
 }
 
         DB::table('tugas')->where('id', $id)->update([
-            'no_surat' => $request->no_surat,
+            'nomorsurat' => $request->nomorsurat,
             'mulai' => $request->mulai,
             'akhir' => $request->akhir,
             'menimbang' => $request->menimbang,

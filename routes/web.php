@@ -7,17 +7,18 @@ use App\Http\Controllers\AgamaController;
 use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\PersonelController;
+use App\Http\Controllers\BerandaController;
 // use adalah memanggil file yang dituju
 
 
 // dibawah ini adalah route langsung view tanpa controller
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [BerandaController::class, 'index']);
 
-
-route::group(['middleware' => ['auth']], function(){
+// route::group(['middleware' => ['auth']], function(){
 
 
 
@@ -86,6 +87,8 @@ Route::get('/tugas/show/{id}', [TugasController::class, 'show'])->name('tugassho
 Route::get('/tugas/delete/{id}', [TugasController::class, 'destroy'])->name('tugasdestroy');
 // route delete adalah url untuk menghapus data per line atau id
 Route::get('/tugas/cetak_pdf/{id}', [TugasController::class, 'cetak_pdf'])->name('cetak_pdf');
+Route::get('/tugas/edit/{id}', [TugasController::class, 'edit'])->name('tugasedit');
+Route::post('/tugas/update/{id}', [TugasController::class, 'update'])->name('tugasupdate');
 
 Route::get('/personel', [PersonelController::class, 'index'])->name('personel');
 Route::get('/personel/create', [PersonelController::class, 'create'])->name('personelcreate');
@@ -96,7 +99,7 @@ Route::get('/personel/edit/{id}', [PersonelController::class, 'edit'])->name('pe
 Route::post('/personel/update/{id}', [PersonelController::class, 'update'])->name('personelupdate');
 Route::get('/personel/personelPDF', [PersonelController::class, 'personelPDF'])->name('personelPDF');
 
-});
+// });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

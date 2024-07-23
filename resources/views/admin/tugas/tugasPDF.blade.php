@@ -65,28 +65,15 @@
     </center>
         <p align="center">SURAT PERINTAH<br>
         Nomor Surat Tugas {{$tugas->nomorsurat}}</p>
-
-        <p> Menimbang: <br>
-        {{ $tugas->menimbang }}.</p>
-
-        <p>Dasar: <br>
-        {{ $tugas->dasar }}.</p>
+        {!! html_entity_decode($tugas->menimbang) !!}
+        {!! html_entity_decode($tugas->dasar) !!}
 
         <p align="center">DIPERINTAHKAN</p>
         <p>Kepada:</p>
         <ol>
             <li>{{$tugas->personel}} NRP {{$tugas->nrp}}, jabatan Kapustasisinfo Disinfolahtaau (sebagai narasumber).</li>
         </ol>
-
-        <p>Untuk:</p>
-        <ol>
-            <li>{{ $tugas->perihal }}, dengan ketentuan sebagai berikut:</li>
-            <ul>
-                <li>Berangkat tanggal {{$tugas->mulai}}, kembali tanggal {{$tugas->akhir}}, berkendaraan umum/bus/dll.</li>
-                <li>Biaya perjalanan dinas pergi pulang ditanggung oleh negara.</li>
-            </ul>
-            <li>Melaksanakan perintah ini dengan rasa tanggung jawab.</li>
-        </ol>
+        {!! html_entity_decode($tugas->perihal) !!}
         <p>Selesai.</p>
         <div class="signature">
         Dikeluarkan di Jakarta<br>
