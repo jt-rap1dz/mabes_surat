@@ -2,6 +2,7 @@
 
 @section('konten')
 <h1 class="mt-4">Dashboard</h1>
+@if (Auth::user()->role =='admin')
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
@@ -43,7 +44,8 @@
                                 </div>
                             </div>
                         </div>
-
+                        @endif
+                    
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>

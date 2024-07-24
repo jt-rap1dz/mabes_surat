@@ -3,18 +3,18 @@
 @section('front')
 <div class="header-carousel owl-carousel">
     <div class="header-carousel-item">
-        <img src="{{ asset('front') }}/img/carousel-1.jpg" class="img-fluid w-100" alt="Image">
+        <img src="{{ asset('front') }}/img/prima.jpg" class="img-fluid w-100" alt="Image">
         <div class="carousel-caption">
             <div class="container align-items-center py-4">
                 <div class="row g-5 align-items-center">
                     <div class="col-xl-7 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
                         <div class="text-start">
-                            <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To WaterLand</h4>
-                            <h1 class="display-4 text-uppercase text-white mb-4">The Biggest Theme & Amusement Park</h1>
-                            <p class="mb-4 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy... 
+                            <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To Mabes Surat</h4>
+                            <h1 class="display-4 text-uppercase text-white mb-4">Untuk Kebutuhan Surat Tugas Personel</h1>
+                            <p class="mb-4 fs-5">Laksanakan Tugas Dengan Penuh Rasa Tanggung Jawab. Jaga Nama Baik Korps, Satuan, Matra dan TNI.
                             </p>
                             <div class="d-flex flex-shrink-0">
-                                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Our Packages</a>
+                                <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="{{ url('register') }}">Register</a>
                             </div>
                         </div>
                     </div>
@@ -58,15 +58,15 @@
         </div>
     </div>
     <div class="header-carousel-item">
-        <img src="img/carousel-2.jpg" class="img-fluid w-100" alt="Image">
+        <img src="{{ asset('front') }}/img/tembak.jpg" class="img-fluid w-100" alt="Image">
         <div class="carousel-caption">
             <div class="container py-4">
                 <div class="row g-5 align-items-center">
                     <div class="col-xl-7 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;">
                         <div class="text-start">
-                            <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To WaterLand</h4>
-                            <h1 class="display-4 text-uppercase text-white mb-4">The Greatest Water and Amusement Park</h1>
-                            <p class="mb-4 fs-5">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy... 
+                            <h4 class="text-primary text-uppercase fw-bold mb-4">Welcome To Mabes Surat</h4>
+                            <h1 class="display-4 text-uppercase text-white mb-4">Untuk Kebutuhan Surat Tugas Personel</h1>
+                            <p class="mb-4 fs-5">Laksanakan Tugas Dengan Penuh Rasa Tanggung Jawab. Jaga Nama Baik Korps, Satuan, Matra dan TNI.
                             </p>
                             <div class="d-flex flex-shrink-0">
                                 <a class="btn btn-primary rounded-pill text-white py-3 px-5" href="#">Our Packages</a>

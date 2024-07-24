@@ -18,7 +18,7 @@ use App\Http\Controllers\BerandaController;
 
 Route::get('/', [BerandaController::class, 'index']);
 
-// route::group(['middleware' => ['auth']], function(){
+route::group(['middleware' => ['auth', 'role:admin|personel']], function(){
 
 
 
@@ -56,6 +56,10 @@ Route::get('/tampilan_keempat', function () {
 
 // dibawah ini adalah route menggunakan controller
 Route::get('/dashboard', [DashboardController::class, 'index']);
+
+route::group(['middleware' => ['role:admin']], function(){
+
+
 Route::get('/kesatuan', [KesatuanController::class, 'index']);
 Route::get('/kesatuan/create', [KesatuanController::class, 'create'])->name('kesatuancreate');
 // kesatuan/create membuat url untuk diarahkan ke file admin/kesatuan/create.blade.php
@@ -98,8 +102,8 @@ Route::post('/personel/store', [PersonelController::class, 'store'])->name('pers
 Route::get('/personel/edit/{id}', [PersonelController::class, 'edit'])->name('personeledit');
 Route::post('/personel/update/{id}', [PersonelController::class, 'update'])->name('personelupdate');
 Route::get('/personel/personelPDF', [PersonelController::class, 'personelPDF'])->name('personelPDF');
-
-// });
+});
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
