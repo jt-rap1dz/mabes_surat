@@ -28,7 +28,8 @@ class DashboardController extends Controller
             'pimpinan.nrp as pimpinan_nrp',
             'personel.nama as personel',
             'personel.nrp',
-            'provinsi.wilayah'
+            'provinsi.wilayah',
+            'personel.user_id'
         )
         ->get();
 

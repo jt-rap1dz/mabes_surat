@@ -49,7 +49,9 @@
                         <table id="datatablesSimple">
                             <thead>
                                 <tr>
+                                    @if (Auth::user()->role =='admin')
                                     <th>No</th>
+                                    @endif
                                     <th>Nomor Surat</th>
                                     <th>Mulai</th>
                                     <th>Akhir</th>
@@ -61,7 +63,9 @@
                             </thead>
                             <tfoot>
                                 <tr>
+                                    @if (Auth::user()->role =='admin')
                                     <th>No</th>
+                                    @endif
                                     <th>Nomor Surat</th>
                                     <th>Mulai</th>
                                     <th>Akhir</th>
@@ -72,6 +76,7 @@
                                 </tr>
                             </tfoot>
                             <tbody>
+                                @if (Auth::user()->role =='admin')
                                 @php $no=1 @endphp
                                 @foreach ($tugas2 as $tug)
                                     <tr>
@@ -112,6 +117,25 @@
                                         </td>
                                     </tr>
                                 @endforeach
+                                @else
+                                @foreach ($tugas2 as $tug)
+                                @if($tug->user_id == Auth::user()->id)
+                                    <tr>
+                                        
+                                        <td>{{ $tug->nomorsurat }}</td>
+                                        <td>{{ $tug->mulai }}</td>
+                                        <td>{{ $tug->akhir }}</td>
+                                        <td>{{ $tug->wilayah }}</td>
+                                        <td>{{ $tug->personel }}</td>
+                                        <td>{{ $tug->pimpinan }}</td>
+                                        <td>
+                                            Surat Terbit
+                                        </td>
+                                        {{-- endif user_id --}}
+                                        @endif 
+                                        @endforeach
+                                        {{-- endif role==admin --}}
+                                        @endif
                             </tbody>
                         </table>
 
