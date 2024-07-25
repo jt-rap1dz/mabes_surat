@@ -8,6 +8,7 @@ use App\Http\Controllers\PimpinanController;
 use App\Http\Controllers\TugasController;
 use App\Http\Controllers\PersonelController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\UserController;
 // use adalah memanggil file yang dituju
 
 
@@ -18,7 +19,8 @@ use App\Http\Controllers\BerandaController;
 
 Route::get('/', [BerandaController::class, 'index']);
 
-route::group(['middleware' => ['auth', 'role:admin|personel']], function(){
+//middleware admin
+route::group(['middleware' => ['auth', 'checkActive', 'role:admin|personel']], function(){
 
 
 
@@ -57,7 +59,12 @@ Route::get('/tampilan_keempat', function () {
 // dibawah ini adalah route menggunakan controller
 Route::get('/dashboard', [DashboardController::class, 'index']);
 
+
+//middleware personel
 route::group(['middleware' => ['role:admin']], function(){
+
+Route::get('/user', [UserController::class, 'index'])->name('hak.akses');
+Route::post('/user/{user}/activate', [UserController::class, 'activate'])->name('user.activate');
 
 
 Route::get('/kesatuan', [KesatuanController::class, 'index']);
@@ -75,11 +82,13 @@ Route::get('/agama/create', [AgamaController::class, 'create'])->name('agamacrea
 Route::post('/agama/store', [AgamaController::class, 'store'])->name('agamastore');
 // route post digunakan untuk mengirimkan data secara tertutup
 
+
 Route::get('/pimpinan', [PimpinanController::class, 'index'])->name('pimpinan');
 Route::get('/pimpinan/create', [PimpinanController::class, 'create'])->name('pimpinancreate');
 // pimpinan/create membuat url untuk diarahkan ke file admin/pimpinan/create.blade.php
 Route::post('/pimpinan/store', [PimpinanController::class, 'store'])->name('pimpinanstore');
 // route post digunakan untuk mengirimkan data secara tertutup
+
 
 Route::get('/tugas', [TugasController::class, 'index'])->name('tugas');
 Route::get('/tugas/create', [TugasController::class, 'create'])->name('tugascreate');
@@ -94,6 +103,7 @@ Route::get('/tugas/cetak_pdf/{id}', [TugasController::class, 'cetak_pdf'])->name
 Route::get('/tugas/edit/{id}', [TugasController::class, 'edit'])->name('tugasedit');
 Route::post('/tugas/update/{id}', [TugasController::class, 'update'])->name('tugasupdate');
 
+
 Route::get('/personel', [PersonelController::class, 'index'])->name('personel');
 Route::get('/personel/create', [PersonelController::class, 'create'])->name('personelcreate');
 // personel/create membuat url untuk diarahkan ke file admin/personel/create.blade.php
@@ -102,9 +112,12 @@ Route::post('/personel/store', [PersonelController::class, 'store'])->name('pers
 Route::get('/personel/edit/{id}', [PersonelController::class, 'edit'])->name('personeledit');
 Route::post('/personel/update/{id}', [PersonelController::class, 'update'])->name('personelupdate');
 Route::get('/personel/personelPDF', [PersonelController::class, 'personelPDF'])->name('personelPDF');
+
+
 });
 });
 Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 // Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');

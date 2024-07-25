@@ -9,7 +9,7 @@ class Personel extends Model
 {
     use HasFactory;
     protected $table = 'personel'; // mengambil table di mysql
-    protected $fillable = ['nama', 'nrp', 'alamat', 'agama_id', 'kesatuan_id', 'foto']; // mengambil kolom dari table personel
+    protected $fillable = ['nama', 'nrp', 'alamat', 'agama_id', 'kesatuan_id', 'foto', 'user_id']; // mengambil kolom dari table personel
 
     // mematikan timestamps created_at dan update_at pada tabel user
     public $timestamps = false;

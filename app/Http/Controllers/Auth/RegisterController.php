@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Personel; // penambahan model personel
 
 class RegisterController extends Controller
 {
@@ -52,6 +53,13 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+
+            // penambahan isi kolom dari tabel personel untuk memverifikasi register
+            'nama' => ['required', 'string', 'min:2'],
+            'nrp' => ['required', 'string', 'max:16'],
+            'alamat' => ['required', 'string', 'max:255'],
+            'kesatuan_id' => ['required'],
+            'agama_id' => ['required'],
         ]);
     }
 
@@ -63,10 +71,21 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        // return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        // penambahan isi kolom dari tabel personel untuk memverifikasi register
+        Personel::create([
+            'nama' => $data['nama'],
+            'nrp' => $data['nrp'],
+            'alamat' => $data['alamat'],
+            'kesatuan_id' => $data['kesatuan_id'],
+            'agama_id' => $data['agama_id'],
+            'user_id' => $user->id,
+        ]);
+        return $user;
     }
 }

@@ -129,7 +129,16 @@
                                         <td>{{ $tug->personel }}</td>
                                         <td>{{ $tug->pimpinan }}</td>
                                         <td>
-                                            Surat Terbit
+                                            
+                                            @if(!empty($tug->foto))
+                                            <a href="{{ url('admin/img')}}/{{ $tug->foto }}" class="btn btn-primary btn-sm" download>
+                                            Download Foto</a>
+                                            @else
+                                            {{-- <a href="#" class="btn btn-primary btn-sm" disabled>Surat Belum Terbit</a> --}}
+                                            <span>Surat Belum Terbit</span>
+                                            @endif
+                                            
+
                                         </td>
                                         {{-- endif user_id --}}
                                         @endif 

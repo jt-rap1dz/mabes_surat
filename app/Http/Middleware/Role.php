@@ -14,8 +14,8 @@ class Role
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, $roles): Response
-    { // penambahan $roles
+    public function handle(Request $request, Closure $next, $roles): Response // penambahan $roles
+    { 
         if(!Auth::check()){
             // jika dia tidak memiliki user atau akses maka diarahkan ke abort 403
             abort(403, 'Belum mempunyai account');
